@@ -1,0 +1,49 @@
+* ,html,body
+{
+    margin: 0;
+    padding: 0;
+}
+
+img
+{
+   height: 50px;
+    width: 75px;
+}
+
+ul li
+{
+    display: inline-block;
+}
+
+nav ul li a
+{
+    font-weight: bold ;
+    width: 100%;
+    padding-left: 20px; 
+    font-size: 18px;
+    text-decoration: none;
+    color: azure;
+}
+
+nav ul li a:hover
+{
+    text-decoration: none;
+    color:darksalmon;
+    transition: 0.5s ease-in;
+}
+
+nav ul li a: active
+{
+    color: red;
+}
+    
+nav
+{
+    float: right;
+    margin-right: -20px;
+}
+
+form
+{
+    margin-right: 20px;
+}
