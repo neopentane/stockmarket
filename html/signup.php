@@ -27,20 +27,30 @@
 echo <<<_END
 <div class="container">
 	<form method="POST" action="signup.php">$error
+	<div class="form-fill">
 		<span class='fieldname'>Username</span>
 		<input type='text' maxlength='16' name='username' value='$username'>
+	</div>
+	<div class="form-fill">
 		<span class='fieldname'>Password</span>
 		<input type='text' maxlength='16' name='password' value='$password'>
+	</div>
+	<div class="form-fill">
 		<span class='fieldname'>email</span>
 		<input type='text' maxlength='16' name='email' value='$email'>
+	</div>
+	<div class="form-fill">
 		<span class='fieldname'>name</span>
 		<input type='text' maxlength='16' name='name' value='$name'>
+	</div>
+	<div class="form-fill">
 		<input type='submit' value='Submit'>
+	</div>
 	</form>
 </div>
+</main>
 </body>
 </html>
 _END;
 
 ?>
-

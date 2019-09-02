@@ -3,5 +3,15 @@ body {
   min-height: 75rem;
   padding-top: 4.5rem;
 }
-
+main.container{
+      background-color: lightgray;
+      color: black;
+      padding: 32px;
+}
 .nav-link a:visited {color:green;}
+span.fieldname{
+  padding: 16px;
+}
+input{
+  
+}
