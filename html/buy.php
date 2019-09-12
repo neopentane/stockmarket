@@ -32,7 +32,7 @@ else{
 
 
 }*/
-$result = queryMysql("SELECT * FROM NSE_DATA ORDER BY $sort $order");
+$result = queryMysql("SELECT * FROM BSE_DATA ORDER BY $sort $order");
 $num = $result->num_rows;
 echo "<br>";
 echo "<table><tr> <th>  Compani  </th> <th> SC_CODE </th> <th> Value  </th><th> Buy </th><th></th></tr>";
