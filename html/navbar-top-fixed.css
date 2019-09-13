@@ -13,5 +13,10 @@ span.fieldname{
   padding: 16px;
 }
 input{
-  
+
+}
+
+th,td{
+  padding: 12px;
+  border:1px solid black;
 }

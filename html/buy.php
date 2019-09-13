@@ -35,7 +35,7 @@ else{
 $result = queryMysql("SELECT * FROM BSE_DATA ORDER BY $sort $order");
 $num = $result->num_rows;
 echo "<br>";
-echo "<table><tr> <th>  Compani  </th> <th> SC_CODE </th> <th> Value  </th><th> Buy </th><th></th></tr>";
+echo "<table><tr> <th>  Compani  </th> <th> SC_CODE </th> <th> Value  </th><th> Buy </th></tr>";
 while($row = $result->fetch_assoc()){
   echo "<tr><td>".$row["SC_NAME"]."</td><td>".$row["SC_CODE"]."</td><td>".$row["LAST"]."</td>"."<td><a href='trans.php?sc_code=$row[SC_CODE]'>Buy</a></td></tr>";
   }
