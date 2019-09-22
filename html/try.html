@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Chart using XML Data</title>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script type="text/javascript">
+    window.onload = function() {
+        var dataPoints = [];
+
+        function getDataPointsFromCSV(csv) {
+            var dataPoints = csvLines = points = [];
+            csvLines = csv.split(/[\r?\n|\r|\n]+/);
+
+            for (var i = 0; i < csvLines.length; i++)
+                if (csvLines[i].length > 0) {
+                    points = csvLines[i].split(",");
+                    dataPoints.push({
+                        x: new Date(points[0]),
+                        y: parseFloat(points[1])
+                    });
+                }
+            return dataPoints;
+        }
+
+	//$.get("https://www.quandl.com/api/v3/datasets/BSE/SENSEX.csv?api_key=ETv6cCHC9EV16uscmBRK&start_date=2019-03-20", function(data) {
+		$.get("./sql/BSE-SENSEX.csv", function(data) {
+	    var chart = new CanvasJS.Chart("chartContainer", {
+		    title: {
+		         text: "BSE INDEX",
+		    },
+		axisX:{
+			title : "Date",
+			valueFormatString: "DD MMM",
+			crosshair: {
+				enabled: true,
+				snapToDataPoint: true
+		}
+	},
+      axisY:{
+        title: "BSE Index",
+       minimum: 35000,
+       //maximum: 610
+     },
+		    data: [{
+		         type: "line",
+		         dataPoints: getDataPointsFromCSV(data)
+		      }]
+	     });
+
+	      chart.render();
+
+	});
+  }
+</script>
+</head>
+<body>
+	<div id="chartContainer" style="width:60%; height:300px;"></div>
+</body>
+</html>

@@ -5,15 +5,9 @@ if($loggedin){
 }
 
 echo <<<_END
-      <div class="jumbotron">
-        <h1>Welcome</h1>
 
-      </div>
-    </main>
   </body>
 </html>
 _END;
-
-
 
 ?>

@@ -45,9 +45,9 @@ echo <<<_END
         <ul class="navbar-nav mr-auto">
           <ul>
                 <li><a href="index.php">Home</a></li>
-                <li><a href="login.php">Today top 10</a></li>
-                <li><a href="signup.php">My Account</a></li>
-                <li><a href="#">News</a></li>
+                <li><a href="#">Today top 10</a></li>
+                <li><a href="profile.php">My Account</a></li>
+                <li><a href="http://localhost/buy.php?sort=NET_TURNOV&order=DESC">Buy</a></li>
 								<li><a href="logout.php">Logout</a></li>
 
 
@@ -71,7 +71,7 @@ echo <<<_END
 		<div class="collapse navbar-collapse" id="navbarCollapse">
 			<ul class="navbar-nav mr-auto">
 				<ul>
-							<li><a href="index.php">Home</a></li>
+							<li><a href="index.html">Home</a></li>
 							<li><a href="login.php">Login</a></li>
 							<li><a href="signup.php">Signup</a></li>
 							<li><a href="#">News</a></li>

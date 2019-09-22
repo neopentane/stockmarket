@@ -71,6 +71,7 @@ _END;
     $price=(int)sanitizeString($_POST['price']);
     queryMysql("INSERT INTO TRANSACTION_LOG VALUES('$stock_id','$user','$quantiy',$price)");
     queryMysql("UPDATE user SET credit = credit - $price WHERE username='$user'");
+    echo "<div class='alert alert-sucess' role='alert'> Transaction Sucessful !! <a href='profile.php'> Click Here To See Transaction </a> </div>";
 
   }
   else{
