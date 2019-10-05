@@ -40,17 +40,24 @@ $alert="None";
 echo <<<_END
 <div class="container">
 	<form method="POST" action="login.php">
-			<div class="form-fill">
-				<span class='fieldname'>Username</span>
-					<input type='text' maxlength='16' name='username' value='$username'>
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="form-group">
+					<h2>Login</h2>
+				</div>
+				<div class="form-group">
+					<label for="username"> Username </label>
+					<input type='text' id="username" class="form-control" maxlength='16' name='username' value='$username'>
+				</div>
+				<div class="form-group">
+					<label for="password"> Password </label>
+					<input type='password' id="password" class="form-control" maxlength='16' name='password' value='$password'>
+				</div>
+				<div class="form-group">
+					<button class="btn btn-dark" type='submit' value='Submit'>Submit </button>
+				</div>	
 			</div>
-			<div class="form-fill">
-				<span class='fieldname'>Password</span>
-					<input type='password' maxlength='16' name='password' value='$password'>
-			</div>
-			<div class="form-fill">
-				<input type='submit' value='Submit'>
-			</div>
+		</div>
 	</form>
 </div>
 </body>

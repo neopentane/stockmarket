@@ -17,7 +17,7 @@
 <!-- Custom styles for this template -->
 <link href="navbar-top-fixed.css" rel="stylesheet">
 <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script type="text/javascript" src="js/canvasjs.min.js"></script>
 <script type="text/javascript">
     window.onload = function() {
         var dataPoints = [];
@@ -40,6 +40,7 @@
 	//$.get("https://www.quandl.com/api/v3/datasets/BSE/SENSEX.csv?api_key=ETv6cCHC9EV16uscmBRK&start_date=2019-03-20", function(data) {
 		$.get("./sql/BSE-SENSEX.csv", function(data) {
 	    var chart1 = new CanvasJS.Chart("chartContainer1", {
+	    	animationEnabled: true,
 		    title: {
 		         text: "BSE INDEX",
 		    },
@@ -90,6 +91,7 @@
 	//$.get("https://www.quandl.com/api/v3/datasets/BSE/SENSEX.csv?api_key=ETv6cCHC9EV16uscmBRK&start_date=2019-03-20", function(data) {
 		$.get("./sql/data.csv", function(data) {
 	    var chart = new CanvasJS.Chart("chartContainer", {
+	    	animationEnabled: true,
 		    title: {
 		         text: "NIFTY 50 ",
 		    },

@@ -27,25 +27,37 @@
 echo <<<_END
 <div class="container">
 	<form method="POST" action="signup.php">$error
-	<div class="form-fill">
-		<span class='fieldname'>Username</span>
-		<input type='text' maxlength='16' name='username' value='$username'>
-	</div>
-	<div class="form-fill">
-		<span class='fieldname'>Password</span>
-		<input type='text' maxlength='16' name='password' value='$password'>
-	</div>
-	<div class="form-fill">
-		<span class='fieldname'>email</span>
-		<input type='text' maxlength='16' name='email' value='$email'>
-	</div>
-	<div class="form-fill">
-		<span class='fieldname'>name</span>
-		<input type='text' maxlength='16' name='name' value='$name'>
-	</div>
-	<div class="form-fill">
-		<input type='submit' value='Submit'>
-	</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="form-group">
+					<h2>Signup</h2>
+				</div>
+			
+			<div class="form-group">
+				<label for="username"> Username </label>
+				<input type='text' maxlength='16' id="username" class="form-control" name='username' value='$username' required>
+			</div>
+			<div class="form-group">
+				<label for="password"> Password </label>
+				<input type='password' maxlength='16' id="password" class="form-control" name='password' value='$password' required>
+			</div>
+			<div class="form-group">
+				<label for="confirm-password"> Confirm password </label>
+				<input type='password' maxlength='16' id="confirm-password" class="form-control" name='password' value='$password' required>
+			</div>
+			<div class="form-group">
+				<label for="email"> Email </label>
+				<input type='email' id="email" class="form-control" maxlength='60' name='email' value='$email' required>
+			</div>
+			<div class="form-group">
+				<label for="name"> Name </label>
+				<input type='text' maxlength='16' id="name" class="form-control" name='name' value='$name' required>
+			</div>
+			<div class="form-group">
+				<button class="btn btn-dark" type='submit' value='Submit'>Submit </button>
+			</div>
+			</div>
+		</div>
 	</form>
 </div>
 </main>
