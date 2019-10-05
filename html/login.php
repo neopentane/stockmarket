@@ -38,6 +38,7 @@ if($alert!="None"){
 $alert="None";
 }
 echo <<<_END
+<main role="main" class="container">
 <div class="container">
 	<form method="POST" action="login.php">
 		<div class="row">
@@ -60,6 +61,7 @@ echo <<<_END
 		</div>
 	</form>
 </div>
+</main>
 </body>
 </html>
 _END;

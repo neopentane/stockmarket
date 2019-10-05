@@ -5,7 +5,9 @@ if(! $loggedin){
   echo "<h1> Not loggedin </h1>";
 
 }
-else{
+else{//<<<_END _END;
+   
+    
   if (isset($_GET['sc_code'])){
     $sc_code=sanitizeString($_GET['sc_code']);
     $value="1";
@@ -28,42 +30,71 @@ else{
     echo <<<_END
     <div class="container">
     	<form method="POST" action="trans.php">
-        <table class="mytable">
+        <table class="table">
+        <thead class="thead-light">
         <tr>
-          <th> SC Number </th>
-          <th> Name </th>
-          <th> Price </th>
-          <th> Cash in account </th>
-          <th> quantity </th>
-          <th> Total </th>
-          <th> Click here </th>
+          <th scope="col"> SC Number </th>
+          <th scope="col"> Name </th>
+          <th scope="col"> Price </th>
+          <th scope="col"> Cash in account </th>
+          <th scope="col"> quantity </th>
+          <th scope="col"> Total </th>
+          <th scope="col"> Click here </th>
+        </thead>
         </tr>
           <tr>
-            <th>
+            <th scope="row">
               <input type='text' name="stock_id" value=$stock_id readonly>
             </th>
             <th>
               $sc_name
             </th>
             <th>
-              <input type='text' name="price" value=$price readonly >
+              <input type='text' id='price' name="price" value=$price readonly >
             </th>
-            <th>
+            <th id='inhand'>
               $cash_in_hand
             </th>
             <th>
-              <input type="number" name="quantity" value=$value min="1" max="5">
+              <input type="number" id='quant' name="quantity" value=$value min="1" max="5">
             </th>
             <th>
-              <input type='text' value=$price readonly> </th>
+              <input type='text' id='total' value=$price readonly> </th>
             <th>
-              <input type='submit' value='Submit'>
+	            <button class="btn btn-dark" type='submit' value='Submit'>Submit </button>
             </th>
           </tr>
         </table>
     	</form>
     </div>
 _END;
+      echo "
+    <script type='text/javascript'>
+        document.getElementById('quant').onchange=changer;
+        var inhand=parseFloat(document.getElementById('inhand').innerHTML);
+        var price=parseFloat(document.getElementById('price').value);
+        var total=parseFloat(document.getElementById('total').value);
+        var quant=parseFloat(document.getElementById('quant').value);
+        //document.getElementById('inhand').innerHTML=(inhand/100)*2;
+        //inhand=parseFloat(document.getElementById('inhand').innerHTML);
+        function changer()
+        {   
+            quant=parseInt(document.getElementById('quant').value);
+            //alert('inhand : '+inhand+' price : '+price+' total : '+total+' quant : '+quant+' '+quant*price);
+            if(inhand>=quant*price)
+            {
+                document.getElementById('total').value=quant*price;
+                //total.value=quant*price;
+            }
+            else
+            {
+                alert('Not enough balance !');
+                quant-=1;
+                document.getElementById('quant').value=quant;
+                document.getElementById('total').value=quant*price;
+            }
+        }
+    </script>";
   }
   elseif($_POST['quantity']&&isset($_POST['price'])&&isset($_POST['stock_id'])){
     $stock_id=(int)sanitizeString($_POST['stock_id']);
@@ -71,7 +102,7 @@ _END;
     $price=(int)sanitizeString($_POST['price']);
     queryMysql("INSERT INTO TRANSACTION_LOG VALUES('$stock_id','$user','$quantiy',$price)");
     queryMysql("UPDATE user SET credit = credit - $price WHERE username='$user'");
-    echo "<div class='alert alert-sucess' role='alert'> Transaction Sucessful !! <a href='profile.php'> Click Here To See Transaction </a> </div>";
+    echo "<div class='alert alert-success' role='alert'> Transaction Sucessful !! <a href='profile.php'> Click Here To See Transaction </a> </div>";
 
   }
   else{

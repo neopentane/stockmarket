@@ -37,7 +37,7 @@ if($loggedin){
 echo <<<_END
 
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a href="index.php"class "logo"><img src="image/logo.png"></a>
+      <a href="index.html"><img src="image/logo.png"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -64,7 +64,7 @@ _END;
 else{
 echo <<<_END
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-		<a href="index.php"class "logo"><img src="image/logo.png"></a>
+		<a href="index.html"><img src="image/logo.png"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -93,7 +93,6 @@ echo <<<_END
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js"></script>
-		<main role="main" class="container">
 
 _END;
 

@@ -35,9 +35,9 @@ else{
 $result = queryMysql("SELECT * FROM BSE_DATA ORDER BY $sort $order");
 $num = $result->num_rows;
 echo "<br>";
-echo "<table><tr> <th>  Compani  </th> <th> SC_CODE </th> <th> Value  </th><th> Buy </th></tr>";
+echo "<table class='table table-hover'><thead><tr> <th scope='col'>  Company  </th> <th scope='col'> SC_CODE </th><th scope='col'> Trunover <th scope='col'> Value  </th><th scope='col'> Buy </th></tr></thead>";
 while($row = $result->fetch_assoc()){
-  echo "<tr><td>".$row["SC_NAME"]."</td><td>".$row["SC_CODE"]."</td><td>".$row["LAST"]."</td>"."<td><a href='trans.php?sc_code=$row[SC_CODE]'>Buy</a></td></tr>";
+  echo "<tr><td scope='row'>".$row["SC_NAME"]."</td><td scope='row'>".$row["SC_CODE"]."</td><td scope='row'>".$row["NET_TURNOV"]."</td><td scope='row'>".$row["LAST"]."</td>"."<td scope='row'><a class='btn btn-dark' href='trans.php?sc_code=$row[SC_CODE]' role='button'>Buy</a></td></tr>";
   }
 echo "</table>";
 

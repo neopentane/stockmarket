@@ -25,6 +25,7 @@
 		}
 	}
 echo <<<_END
+<main role="main" class="container">
 <div class="container">
 	<form method="POST" action="signup.php">$error
 		<div class="row">

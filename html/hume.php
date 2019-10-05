@@ -1,21 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title> Wall Street</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
-<link rel="icon" href="favicon.ico">
-<link href="css/sitestyle.css" rel="stylesheet" type="text/css">
+<?php
+require_once('header.php');
 
-<title>Wall Street </title>
-
-<!-- Bootstrap core CSS -->
-<link rel="stylesheet" href="css/bootstrap.min.css">
-
-<!-- Custom styles for this template -->
-<link href="navbar-top-fixed.css" rel="stylesheet">
+echo <<<_END
 <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="js/canvasjs.min.js"></script>
 <script type="text/javascript">
@@ -117,47 +103,12 @@
 	      chart.render();
 
 	});
-	var chart = new CanvasJS.Chart("chartContainer3", {
-	animationEnabled: true,
-	theme: "light2", // "light1", "light2", "dark1", "dark2"
-	title: {
-		text: "GDP per Capita - 2019"
-	},
-	subtitles: [{
-		text: "In USD",
-		fontSize: 16
-	}],
-	axisY: {
-		prefix: "$",
-		scaleBreaks: {
-			customBreaks: [{
-				startValue: 10000,
-				endValue: 35000
-			}]
-		}
-	},
-	data: [{
-		type: "column",
-		yValueFormatString: "$#,##0.00",
-		dataPoints: [
-			{ label: "USA", y: 57466.787 },
-			{ label: "Austraila", y: 49927.82 },
-			{ label: "UK", y: 39899.388 },
-			{ label: "UAE", y: 37622.207 },
-			{ label: "Brazil", y: 8649.948 },
-			{ label: "China", y: 8123.181 },
-			{ label: "Indonesia", y: 3570.295 },
-			{ label: "India", y: 1709.387 }	
-		]
-	}]
-});
-chart.render();
   }
 </script>
 </head>
 <body>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-		<a href="index.php"class="logo"><img src="image/logo.png"></a>
+		<a href="index.php"class "logo"><img src="image/logo.png"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -177,27 +128,10 @@ chart.render();
 			</form>
 		</div>
 	</nav>
-	<div class="row">
-			<div class="col" id="chartContainer1" style="width:60%; height:300px;"></div>
-			<div class="col" id="chartContainer" style="width:60%; height:300px;"></div>
-			<div class="col" id="chartContainer3" style="width:60%; height:300px;"></div>
-	</div>
-	</div>
-	<div class="card mb-3">
-			<img src="/image/news1.jpg" class="card-img-top" style="height: 400px;width: 1600px;" alt="...">
-			<div class="card-body">
-			  <h5 class="card-title">Card title</h5>
-			  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-			  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-			</div>
-		  </div>
-		  <div class="card">
-			<div class="card-body">
-			  <h5 class="card-title">Card title</h5>
-			  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-			  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-			</div>
-			<img src="..." class="card-img-top" alt="...">
-	</div>
-</body>
-</html>
+	<div id="chartContainer1" style="width:60%; height:300px;"></div>
+	<div id="chartContainer" style="width:60%; height:300px;"></div>
+
+_END;
+
+
+?>
