@@ -1,22 +1,17 @@
 <?php
 require_once 'header.php';
-$rows = array();
 if(! $loggedin){
   die("Not Logged in !!!");
   echo "<h1> Not loggedin </h1>";
 
 }
 else{//<<<_END _END;
+    $max=0;
     
   if (isset($_GET['sc_code'])){
     $sc_code=sanitizeString($_GET['sc_code']);
-    $value="1";
-    $rows = array();    
-    $result = queryMysql("SELECT * FROM HISTORICAL_DATA WHERE SC_CODE=$sc_code");
-    while($row = $result->fetch_assoc()){
-      $rows[] = $row;
-    }
-    //print json_encode($rows);
+    $max=(int)sanitizeString($_GET['vol']);
+    $value=$max;
     $result = queryMysql("SELECT * FROM BSE_DATA WHERE SC_CODE=$sc_code");
     while($row = $result->fetch_assoc()){
       $stock_id= $row['SC_CODE'];
@@ -35,7 +30,7 @@ else{//<<<_END _END;
 
     echo <<<_END
     <div class="container">
-    	<form method="POST" action="trans.php">
+    	<form method="POST" action="sell.php">
         <table class="table">
         <thead class="thead-light">
         <tr>
@@ -62,12 +57,12 @@ else{//<<<_END _END;
               $cash_in_hand
             </th>
             <th>
-              <input type="number" id='quant' name="quantity" value=$value min="1" max="15">
+              <input type="number" id='quant' name="quantity" value=$value min="1" max=$max>
             </th>
             <th>
               <input type='text' id='total' value=$price readonly> </th>
             <th>
-	            <button class="btn btn-dark" type='submit' value='Submit'>Buy  </button>
+	            <button class="btn btn-dark" type='submit' value='Submit'>Submit </button>
             </th>
           </tr>
         </table>
@@ -87,18 +82,6 @@ _END;
         {   
             quant=parseInt(document.getElementById('quant').value);
             //alert('inhand : '+inhand+' price : '+price+' total : '+total+' quant : '+quant+' '+quant*price);
-            if(inhand>=quant*price)
-            {
-                document.getElementById('total').value=quant*price;
-              }
-                //total.value=quant*price;
-            else
-            {
-                alert('Not enough balance !');
-                quant-=1;
-                document.getElementById('quant').value=quant;
-                document.getElementById('total').value=quant*price;
-            }
         }
     </script>";
   }
@@ -108,8 +91,13 @@ _END;
     $price=(int)sanitizeString($_POST['price']);
     $price=$price*$quantiy;
     echo $price ;
-    queryMysql("INSERT INTO TRANSACTION_LOG VALUES('$stock_id','$user','$quantiy',$price)");
-    queryMysql("UPDATE user SET credit = credit - $price WHERE username='$user'");
+    //if($max==$quantiy){
+        queryMysql("DELETE FROM TRANSACTION_LOG WHERE stock_id='$stock_id' AND holder='$user' AND VOL='$quantiy'");
+    //}
+    //else{
+        queryMysql("UPDATE TRANSACTION_LOG SET VOL='$quantiy' WHERE stock_id='$stock_id' AND holder='$user' AND VOL='$max'");
+    //}
+    queryMysql("UPDATE user SET credit = credit + $price WHERE username='$user'");
     echo "<div class='alert alert-success' role='alert'> Transaction Sucessful !! <a href='profile.php'> Click Here To See Transaction </a> </div>";
 
   }
@@ -121,26 +109,5 @@ _END;
 
 ?>
 
-<script>
-window.onload = function () {
- 
-var chart = new CanvasJS.Chart("chartContainer", {
-	animationEnabled: true,
-	exportEnabled: true,
-	theme: "light1", // "light1", "light2", "dark1", "dark2"
-	title:{
-		text: "PHP Column Chart from Database"
-	},
-	data: [{
-		type: "column", //change type to bar, line, area, pie, etc  
-		dataPoints: <?php echo json_encode($rows, JSON_NUMERIC_CHECK); ?>
-	}]
-});
-chart.render();
- 
-}
-</script>
-<!--<div id="chartContainer" style="height: 370px; width: 100%;"></div>-->
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </body>
 </html>

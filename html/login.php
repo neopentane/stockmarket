@@ -32,12 +32,13 @@ else
 }
 
 if($alert!="None"){
-	echo "<div class='$alert' role='alert'>
+	echo "<main role='main' class='container'>	<div class='$alert' role='alert'>
 	  $error
-	</div>";
+	</div></main>";
 $alert="None";
 }
 echo <<<_END
+<div class="container" >
 <main role="main" class="container">
 <div class="container">
 	<form method="POST" action="login.php">
@@ -62,6 +63,7 @@ echo <<<_END
 	</form>
 </div>
 </main>
+</div>
 </body>
 </html>
 _END;

@@ -12,7 +12,21 @@ main.container{
 span.fieldname{
   padding: 16px;
 }
-input{
-
+.triangle-up {
+	width: 0;
+	height: 0;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+  border-bottom: 16px solid;
+  color: green;
 }
+.triangle-down {
+	width: 0;
+	height: 0;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+  border-top: 16px solid;
+  color: red;
+}
+
 

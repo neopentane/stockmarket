@@ -8,19 +8,16 @@
 		$email=sanitizeString($_POST['email']);
 		$name=sanitizeString($_POST['name']);
 		$credit=100000;
-		echo "<h1> Welcome '$username','$password','$email','$name' </h1>";
 		if($username==""){
 			$error="Not All fields are entered<br>";
 		}
 		else{
 			$result=queryMysql("SELECT * FROM user WHERE username='$username'");
-			echo "<h1> Welcome '$username','$password','$email','$name' </h1>";
 			if($result->num_rows)
 				$error="That username already exists <br>";
 			else{
-				echo "<h1> CREATE USER </h1>";
+				echo "<main role='main' class='container'><div class='alert alert-success' role='alert'> Created user successfully click <a href='login.php'>here </a> to login </h1> </div></main>";
 			queryMysql("INSERT INTO user(`name`, `username`, `password`, `credit`, `email`) VALUES ('$name', '$username', '$password', '$credit', '$email')");
-				die("<h4>Account Created Sucessfully</h4>");
 			}
 		}
 	}
